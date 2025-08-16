@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://8iporh0lmuoa"]
+
+[ext_resource type="Script" uid="uid://bf11ors4efs4j" path="res://scripts/banana.gd" id="1_fs8pj"]
+[ext_resource type="Texture2D" uid="uid://dqk8i0cfiaf53" path="res://assets/items/Sprite-0001.png" id="2_iiq8b"]
+[ext_resource type="Texture2D" uid="uid://clg63ubqvp7aq" path="res://assets/items/banana.png" id="3_iiq8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo7w4"]
+size = Vector2(45, 26.5)
+
+[node name="Banana" type="Area2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_fs8pj")
+icon = ExtResource("2_iiq8b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_iiq8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 2.25)
+shape = SubResource("RectangleShape2D_xo7w4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
