@@ -1,0 +1,3 @@
+[gd_scene load_steps=0 format=3 uid="uid://s0nsgw47n44p"]
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
