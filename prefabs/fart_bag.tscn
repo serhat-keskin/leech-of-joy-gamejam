@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx48ff6x2v267"]
+
+[ext_resource type="Script" uid="uid://bhilnj4243hvu" path="res://scripts/player_states/fart.gd" id="1_3pji8"]
+[ext_resource type="Texture2D" uid="uid://jl0ic4vae5d1" path="res://icon.svg" id="2_ogqh5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pt0eb"]
+bounce = 0.36
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ou3d1"]
+size = Vector2(18, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt0eb"]
+size = Vector2(92, 60)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pt0eb"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 15.16
+initial_velocity_max = 43.73
+gravity = Vector3(0, 0, 0)
+color = Color(0.49019608, 1, 0.15686275, 0.5254902)
+
+[node name="FartBag" type="Node2D" groups=["Enemy"]]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 4
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_pt0eb")
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_3pji8")
+
+[node name="Icon" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(1.1920929e-07, -5.684342e-14)
+scale = Vector2(0.140625, 0.12109376)
+texture = ExtResource("2_ogqh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_ou3d1")
+
+[node name="AoETimer" type="Timer" parent="RigidBody2D"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+scale = Vector2(4.0567884, -4.0393815)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+shape = SubResource("RectangleShape2D_pt0eb")
+
+[node name="ExplosionTimer" type="Timer" parent="RigidBody2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="RigidBody2D"]
+scale = Vector2(4, 4)
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_pt0eb")
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
+[connection signal="timeout" from="RigidBody2D/AoETimer" to="." method="_on_ao_e_timer_timeout"]
+[connection signal="timeout" from="RigidBody2D/AoETimer" to="RigidBody2D" method="_on_ao_e_timer_timeout"]
+[connection signal="timeout" from="RigidBody2D/ExplosionTimer" to="RigidBody2D" method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="RigidBody2D" method="_on_damage_timer_timeout"]

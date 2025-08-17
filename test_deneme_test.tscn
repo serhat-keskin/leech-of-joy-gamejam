@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqlslnmbjq1sm"]
+
+[ext_resource type="PackedScene" uid="uid://q2nfnsf2ax3i" path="res://prefabs/enemy_boss.tscn" id="1_1g7rv"]
+[ext_resource type="PackedScene" uid="uid://dawdytq1d80pa" path="res://prefabs/player_v2.tscn" id="4_5hyo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akbl7"]
+size = Vector2(3072.042, 67.87579)
+
+[node name="TEST DENEME TEST" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(551, 262)
+scale = Vector2(0.523, 0.523)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(550.021, 120.937805)
+shape = SubResource("RectangleShape2D_akbl7")
+
+[node name="Enemy_boss" parent="." instance=ExtResource("1_1g7rv")]
+position = Vector2(230, 213)
+
+[node name="Player" parent="." instance=ExtResource("4_5hyo8")]
+position = Vector2(519, 250)

@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://nav4sdjv7byi"]
+
+[ext_resource type="Script" uid="uid://c4mustol8ols5" path="res://scripts/enemy_state_test.gd" id="1_1s2xn"]
+[ext_resource type="Texture2D" uid="uid://jl0ic4vae5d1" path="res://icon.svg" id="2_6blpj"]
+[ext_resource type="PackedScene" uid="uid://dv8dv6j4xf7hx" path="res://prefabs/enemy_gun.tscn" id="3_6blpj"]
+[ext_resource type="PackedScene" uid="uid://tsag137pcggo" path="res://prefabs/banana_peel.tscn" id="3_f0q5y"]
+[ext_resource type="PackedScene" uid="uid://biorove2yovj5" path="res://prefabs/hammer_pickup.tscn" id="4_5llom"]
+[ext_resource type="PackedScene" uid="uid://8iporh0lmuoa" path="res://prefabs/banana.tscn" id="5_c0ppo"]
+[ext_resource type="PackedScene" uid="uid://b3i8vltsahrhw" path="res://prefabs/hotbar.tscn" id="6_c0ppo"]
+[ext_resource type="PackedScene" uid="uid://c8d11ex5bfcbe" path="res://prefabs/enemy.tscn" id="9_511wl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vej65"]
+size = Vector2(20, 23.541702)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6blpj"]
+size = Vector2(1971, 20)
+
+[node name="EnemyStateTest" type="Node2D"]
+position = Vector2(268, 171)
+script = ExtResource("1_1s2xn")
+
+[node name="Icon" type="Sprite2D" parent="." groups=["player"]]
+position = Vector2(286, 220)
+scale = Vector2(0.523, 0.523)
+texture = ExtResource("2_6blpj")
+
+[node name="Area2D" type="Area2D" parent="Icon"]
+position = Vector2(1.9550323e-05, 9.059906e-06)
+scale = Vector2(1.7857143, 1.4285715)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/Area2D"]
+position = Vector2(2.3841858e-07, -1.5258789e-05)
+scale = Vector2(3.5999904, 3.5999904)
+shape = SubResource("RectangleShape2D_vej65")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(54, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 97)
+shape = SubResource("RectangleShape2D_6blpj")
+
+[node name="Enemy_gun" parent="." instance=ExtResource("3_6blpj")]
+position = Vector2(-90, 87)
+
+[node name="Enemy_gun2" parent="." instance=ExtResource("3_6blpj")]
+position = Vector2(649, 232)
+
+[node name="Enemy_gun3" parent="." instance=ExtResource("3_6blpj")]
+position = Vector2(-293, 87)
+
+[node name="Enemy_gun4" parent="." instance=ExtResource("3_6blpj")]
+position = Vector2(-74, 223)
+
+[node name="banana_peel" parent="." instance=ExtResource("3_f0q5y")]
+position = Vector2(391, 157)
+
+[node name="banana_peel2" parent="." instance=ExtResource("3_f0q5y")]
+position = Vector2(-19, 171)
+
+[node name="Banana" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(706, 245)
+
+[node name="Banana2" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(540, 246)
+
+[node name="Banana3" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(445, 245)
+
+[node name="Banana4" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(376, 247)
+
+[node name="Banana5" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(776, 244)
+
+[node name="Banana6" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(509, 246)
+
+[node name="Banana7" parent="." instance=ExtResource("5_c0ppo")]
+position = Vector2(488, 243)
+
+[node name="Hotbar" parent="." instance=ExtResource("6_c0ppo")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 233.0
+offset_top = 418.0
+offset_right = 253.0
+offset_bottom = 418.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Hammer_pickup" parent="." instance=ExtResource("4_5llom")]
+scale = Vector2(0.25, 0.25)
+
+[node name="Hammer_pickup2" parent="." instance=ExtResource("4_5llom")]
+scale = Vector2(0.25, 0.25)
+
+[node name="Enemy" parent="." instance=ExtResource("9_511wl")]
+position = Vector2(-140, 222)
+
+[node name="Enemy2" parent="." instance=ExtResource("9_511wl")]
+position = Vector2(72, 156)
+
+[node name="Enemy3" parent="." instance=ExtResource("9_511wl")]
+position = Vector2(583, 229)
+
+[node name="Enemy4" parent="." instance=ExtResource("9_511wl")]
+position = Vector2(170, 227)

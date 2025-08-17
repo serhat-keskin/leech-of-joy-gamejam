@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvsgyx87a3y1"]
+
+[ext_resource type="Texture2D" uid="uid://jl0ic4vae5d1" path="res://icon.svg" id="1_as4mb"]
+[ext_resource type="Script" uid="uid://bmietbyuj4eo2" path="res://scripts/ammo.gd" id="1_lhriu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhriu"]
+size = Vector2(38.30063, 111.308655)
+
+[node name="Ammo" type="CharacterBody2D"]
+position = Vector2(0, -6)
+scale = Vector2(0.076022126, 0.076022126)
+script = ExtResource("1_lhriu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(3.3403525, 3.3226116, 3.3046083, 1)
+self_modulate = Color(18.892157, 18.892157, 2.200488, 1)
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(0.8425946, 0.30593386)
+texture = ExtResource("1_as4mb")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-0.00018310547, 0)
+scale = Vector2(1.1868104, 3.2686803)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(-0.13128662, 0.8510742)
+rotation = 1.5707964
+scale = Vector2(0.9321552, 0.91400975)
+shape = SubResource("RectangleShape2D_lhriu")
+
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]

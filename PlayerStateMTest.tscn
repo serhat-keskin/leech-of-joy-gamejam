@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://du1yhvmxtcgi8"]
+
+[ext_resource type="PackedScene" uid="uid://dawdytq1d80pa" path="res://prefabs/player_v2.tscn" id="1_e8ccu"]
+[ext_resource type="Texture2D" uid="uid://jl0ic4vae5d1" path="res://icon.svg" id="2_5o5cf"]
+[ext_resource type="PackedScene" uid="uid://cfmqdjfwtd73l" path="res://DialogueTest.tscn" id="3_yxqjj"]
+[ext_resource type="PackedScene" uid="uid://dv8dv6j4xf7hx" path="res://prefabs/enemy_gun.tscn" id="4_tw4yv"]
+[ext_resource type="PackedScene" uid="uid://c8d11ex5bfcbe" path="res://prefabs/enemy.tscn" id="5_e8ccu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tw4yv"]
+distance = 55.922363
+
+[node name="PlayerStateMTest" type="Node2D"]
+
+[node name="Player2" parent="." instance=ExtResource("1_e8ccu")]
+position = Vector2(561, 341)
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(465, 431.5)
+scale = Vector2(4.6875, 0.8046875)
+texture = ExtResource("2_5o5cf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon"]
+position = Vector2(0, 18.019417)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/StaticBody2D"]
+position = Vector2(0.9599991, -5.592224)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("WorldBoundaryShape2D_tw4yv")
+
+[node name="DialogueTest" parent="." instance=ExtResource("3_yxqjj")]
+visible = false
+position = Vector2(237, 314)
+
+[node name="Enemy_gun" parent="." instance=ExtResource("4_tw4yv")]
+
+[node name="Enemy" parent="." instance=ExtResource("5_e8ccu")]
+position = Vector2(306, 345)

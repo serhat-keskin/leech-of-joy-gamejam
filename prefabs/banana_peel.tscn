@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://tsag137pcggo"]
+
+[ext_resource type="Script" uid="uid://7eqsapydikog" path="res://scripts/banana_peel.gd" id="1_7ovsr"]
+[ext_resource type="Texture2D" uid="uid://dqk8i0cfiaf53" path="res://assets/items/Sprite-0001.png" id="2_ahde3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahde3"]
+size = Vector2(41.5, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr8xe"]
+size = Vector2(40, 25)
+
+[node name="banana_peel" type="CharacterBody2D"]
+collision_layer = 2
+slide_on_ceiling = false
+script = ExtResource("1_7ovsr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+position = Vector2(-1.75, 3.25)
+shape = SubResource("RectangleShape2D_ahde3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ahde3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2.5)
+shape = SubResource("RectangleShape2D_pr8xe")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

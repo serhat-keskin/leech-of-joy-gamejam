@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhyv6dokcgfdx"]
+
+[ext_resource type="FontFile" uid="uid://c7hfht7bh4n7a" path="res://assets/Dialogue/PixeloidSansBold-PKnYd.ttf" id="1_8d3v7"]
+[ext_resource type="Script" uid="uid://i8kfhquq4yj8" path="res://GameSystem/start_sceneSetup.gd" id="1_ubv3q"]
+[ext_resource type="Script" uid="uid://bmx44ttikdsy8" path="res://scripts/start_scene_play.gd" id="3_bednl"]
+[ext_resource type="Script" path="res://scripts/start_scene_credits.gd" id="4_5ae3x"]
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_ubv3q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="CanvasLayer/ColorRect/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8d3v7")
+theme_override_font_sizes/font_size = 25
+text = "Leech of Joy"
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8d3v7")
+theme_override_font_sizes/font_size = 12
+text = "PLAY"
+script = ExtResource("3_bednl")
+
+[node name="ButtonCredits" type="Button" parent="CanvasLayer/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8d3v7")
+theme_override_font_sizes/font_size = 12
+text = "CREDITS"
+script = ExtResource("4_5ae3x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhuobubnapab7"]
+
+[ext_resource type="Script" uid="uid://b1y78xn8mv66f" path="res://scripts/progress_bar.gd" id="1_4p71c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_its7a"]
+bg_color = Color(0.89257354, 0.88625133, 0, 0.898)
+
+[node name="HPBar" type="Node2D"]
+script = ExtResource("1_4p71c")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_right = 38.0
+offset_bottom = 4.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_its7a")
+show_percentage = false

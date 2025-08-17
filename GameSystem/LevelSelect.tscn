@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cymshscji8g3p"]
+
+[ext_resource type="Script" path="res://scripts/level_select.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c7hfht7bh4n7a" path="res://assets/Dialogue/PixeloidSansBold-PKnYd.ttf" id="2_font"]
+
+[node name="LevelSelect" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LabelTitle" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="ButtonLevel1" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "LEVEL 1"
+
+[node name="ButtonLevel2" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "LEVEL 2"
+
+[node name="ButtonBoss" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "BOSS"
+
+[node name="ButtonBack" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "BACK"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ButtonLevel1" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ButtonLevel2" to="." method="_on_level2_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ButtonBoss" to="." method="_on_boss_pressed"]
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ButtonBack" to="." method="_on_back_pressed"]

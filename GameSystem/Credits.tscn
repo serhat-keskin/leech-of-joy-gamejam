@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5yiuumw6m8cm"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://c7hfht7bh4n7a" path="res://assets/Dialogue/PixeloidSansBold-PKnYd.ttf" id="2_font"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LabelTitle" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="LabelCredits" type="Label" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Made By\n-Serhat Keskin\n-Beril Ozturk\n-Onat Ali Arik\n-Kaan Büyükerdem\n-Fikret Akbas"
+horizontal_alignment = 1
+
+[node name="ButtonReturn" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[connection signal="pressed" from="ColorRect/CenterContainer/VBoxContainer/ButtonReturn" to="." method="_on_button_pressed"]

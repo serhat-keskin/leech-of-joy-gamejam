@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbttstnxp0rre"]
+
+[ext_resource type="Texture2D" uid="uid://jl0ic4vae5d1" path="res://icon.svg" id="1_04ca3"]
+[ext_resource type="PackedScene" uid="uid://dawdytq1d80pa" path="res://prefabs/player_v2.tscn" id="2_r3ioj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ioj"]
+size = Vector2(128, 124)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_godbo"]
+
+[node name="AbsorbTest" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="." groups=["enemy"]]
+position = Vector2(2, -1)
+texture = ExtResource("1_04ca3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon" groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Icon/StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_r3ioj")
+
+[node name="Player" parent="." instance=ExtResource("2_r3ioj")]
+position = Vector2(150, 6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(172, 66)
+shape = SubResource("WorldBoundaryShape2D_godbo")
